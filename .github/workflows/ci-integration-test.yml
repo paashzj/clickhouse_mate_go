@@ -1,0 +1,23 @@
+name: CI - integration test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci_integration_test:
+    name: ci integration test
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: install clickhouse
+        run: /bin/bash -x test/ci_install_linux.sh
+      - name: wait clickhouse start
+        run: sleep 10
+      - name: run integrate test
+        run: /bin/bash -x test/test_run_linux.sh
