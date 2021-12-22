@@ -12,4 +12,4 @@ COPY docker-build /opt/sh/clickhouse/mate
 
 COPY --from=build /opt/sh/compile/pkg/clickhouse_mate /opt/sh/clickhouse/mate/clickhouse_mate
 
-CMD ["/usr/local/bin/dumb-init", "bash", "-vx", "/opt/sh/clickhouse/mate/scripts/start.sh"]
+CMD ["/usr/bin/dumb-init", "bash", "-vx", "/opt/sh/clickhouse/mate/scripts/start.sh"]
